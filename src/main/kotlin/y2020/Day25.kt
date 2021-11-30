@@ -44,7 +44,7 @@ object Day25 : Day {
         return encryptionKey(loopSize1, keys[1])
     }
 
-    fun part2() {
+    fun part2(): Int {
         throw NotImplementedError()
     }
 }

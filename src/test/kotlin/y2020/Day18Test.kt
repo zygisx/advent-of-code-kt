@@ -27,13 +27,13 @@ internal class Day18Test {
     fun `part1 should return 13683`() {
         every { InputReader.getInputAsList(any()) } returns testInput
         val answer = Day18.part1()
-        assertEquals(13632 + 51 + 12240 + 437, answer)
+        assertEquals(13632L + 51 + 12240 + 437, answer)
     }
 
     @Test
     fun `part2 should return`() {
         every { InputReader.getInputAsList(any()) } returns testInput
         val answer = Day18.part2()
-        assertEquals(51 + 669060 + 1445 + 23340, answer)
+        assertEquals(51L + 669060 + 1445 + 23340, answer)
     }
 }

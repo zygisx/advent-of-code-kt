@@ -62,7 +62,7 @@ object Day20 : Day {
         return cornerTiles.map { it.id }.fold(1) { acc, it -> acc * it }
     }
 
-    fun part2() {
+    fun part2(): Int {
         val tiles = getInput()
         val cornerTiles = getCornerTiles(tiles)
 
@@ -71,6 +71,7 @@ object Day20 : Day {
 
         // find line
 //        c1.edges.filter { it }
+        throw NotImplementedError()
     }
 }
 

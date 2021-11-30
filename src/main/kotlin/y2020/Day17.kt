@@ -49,7 +49,7 @@ object Day17 : Day {
         return initialMap.flatMap { (point, state) ->
             val thisItem = point to pointState(point, state, initialMap)
             val newDiscovers = allNeighbours(point, initialMap)
-                    .filter { it !in initialMap.keys && it !in alreadyRecalculated }
+                    .filter { it.value !in initialMap.values && it.key !in alreadyRecalculated }
                     .map { (neighbourPoint, neighbourState) -> point to pointState(neighbourPoint, neighbourState, initialMap) }
             val all = newDiscovers + thisItem
             alreadyRecalculated.addAll(all.map { it.first })
