@@ -17,6 +17,14 @@ class Counter<KEY> {
         return counter.toMap()
     }
 
+    operator fun get(key: KEY): Int {
+        return counter[key]!!
+    }
+
+    fun getOrNull(key: KEY): Int? {
+        return counter[key]
+    }
+
     fun max(): Pair<KEY, Int>? {
         return counter.maxByOrNull { it.value }?.toPair()
     }
