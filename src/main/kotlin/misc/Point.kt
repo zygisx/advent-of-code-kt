@@ -29,7 +29,7 @@ data class Point(val x: Int, val y: Int): IPoint {
 
     fun neighbours() = sequenceOf(north(), south(), east(), west())
 
-    override fun plus(point: IPoint): IPoint {
+    override fun plus(point: IPoint): Point {
         point as Point
         return Point(x + point.x, y + point.y)
     }
@@ -59,6 +59,18 @@ data class Point(val x: Int, val y: Int): IPoint {
             val x = points.sumBy { it.x } / points.count()
             val y = points.sumBy { it.y } / points.count()
             return Point(x, y)
+        }
+
+        fun pointsInBetween(from: Point, to: Point): List<Point> {
+            val dx = to.x - from.x
+            val dy = to.y - from.y
+            if (from.x != to.x && from.y != to.y && abs(dx) != abs(dy)) {
+                throw NotImplementedError("Only horizontal, vertical or 45° diagonal supported")
+            }
+            val gcd = Math.gcd(abs(dx), abs(dy))
+            val slope = Point(dx / gcd, dy / gcd)
+            val points = generateSequence(from) { it.plus(slope) }.takeWhile { it != to }.plus(to).toList()
+            return points
         }
     }
 }
