@@ -69,8 +69,17 @@ data class Point(val x: Int, val y: Int): IPoint {
             }
             val gcd = Math.gcd(abs(dx), abs(dy))
             val slope = Point(dx / gcd, dy / gcd)
-            val points = generateSequence(from) { it.plus(slope) }.takeWhile { it != to }.plus(to).toList()
-            return points
+            return generateSequence(from) { it.plus(slope) }.takeWhile { it != to }.plus(to).toList()
+        }
+
+        fun <T> toPointsMap(input: Iterable<Iterable<T>>): Map<Point, T> {
+            val map = mutableMapOf<Point, T>()
+            input.forEachIndexed { y, line ->
+                line.forEachIndexed { x, value ->
+                    map[Point(x, y)] = value
+                }
+            }
+            return map
         }
     }
 }
