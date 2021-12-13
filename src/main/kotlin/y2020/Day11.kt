@@ -52,7 +52,7 @@ class Day11 : Day {
     }
 
     fun mapToString(map: Map<Point, SeatState>): String {
-        return Debug.visualizeMap(map) { it.char.toString() }
+        return Debug.visualizeMap(map) { it!!.char.toString() }
     }
 
     fun countOccupiedSeats(
