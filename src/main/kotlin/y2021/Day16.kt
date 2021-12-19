@@ -71,13 +71,11 @@ object Day16 : Day {
         if (lengthType == '0') {
             val size = bin.slice(0 until 15).toInt(2)
             bin = bin.substring(15)
-            println("$size $bin ")
             var binToParseFurther = bin.substring(0 until size)
             bin = bin.substring(size)
             val subPackets = mutableListOf<Packet>()
             while (binToParseFurther.length > 6) {
                 val (packet, newBin) = parsePackets(binToParseFurther)
-                println("$packet $newBin")
                 binToParseFurther = newBin
                 subPackets.add(packet)
             }
