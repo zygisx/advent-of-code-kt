@@ -1,7 +1,6 @@
 package y2021
 
 import misc.Point
-import y2018.Day3
 
 
 object Day17 : Day {
@@ -11,8 +10,8 @@ object Day17 : Day {
 
     data class Target(val xMin: Int, val xMax: Int, val yMin: Int, val yMax: Int)
 
-    val inputRegex = Regex("""target area: x=(-?\d+)..(-?\d+), y=(-?\d+)..(-?\d+)""")
-    fun parseInput(input: String): Target {
+    private val inputRegex = Regex("""target area: x=(-?\d+)..(-?\d+), y=(-?\d+)..(-?\d+)""")
+    private fun parseInput(input: String): Target {
         val match = inputRegex.matchEntire(input)
         val groups = match?.groups ?: throw IllegalArgumentException()
         return Target(
@@ -22,7 +21,7 @@ object Day17 : Day {
             groups[4]!!.value.toInt())
     }
 
-    fun move(coordinates: Point, velocity: Point): Pair<Point, Point> {
+    private fun move(coordinates: Point, velocity: Point): Pair<Point, Point> {
         val newCoordinates = coordinates + velocity
         val newVelocity = velocity.copy(
             x = when {
@@ -35,18 +34,18 @@ object Day17 : Day {
         return newCoordinates to newVelocity
     }
 
-    fun inTarget(coordinates: Point, target: Target): Boolean {
+    private fun inTarget(coordinates: Point, target: Target): Boolean {
         return coordinates.x in target.xMin..target.xMax
                 && coordinates.y in target.yMin..target.yMax
     }
 
-    fun possibleToHitTarget(coordinates: Point, target: Target, velocity: Point): Boolean {
+    private fun possibleToHitTarget(coordinates: Point, target: Target, velocity: Point): Boolean {
         if (coordinates.y < target.yMin) return false
         if (coordinates.x !in target.xMin..target.xMax && velocity.x == 0) return false
         return true
     }
 
-    fun highestPoint(initialVelocity: Point, target: Target): Int? {
+    private fun highestPoint(initialVelocity: Point, target: Target): Int? {
         var coordinates = Point(0, 0)
         var velocity = initialVelocity
         var maxHeight = 0
