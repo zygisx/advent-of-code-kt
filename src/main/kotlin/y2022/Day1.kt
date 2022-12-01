@@ -4,14 +4,22 @@ package y2022
 object Day1 : Day {
     override fun day() = 1
 
-    private fun getInput() = getInputAsList()
+    private fun getInput() = getInputAsString()
 
-    fun part1() {
-        throw NotImplementedError()
+    private fun parseElfEnergy(): List<Int> {
+        return getInput().split("\n\n")
+            .map { it.lines().filterNot { it.isBlank() }.map { it.toInt() }.sum() }
     }
 
-    fun part2() {
-        throw NotImplementedError()
+    fun part1(): Int {
+        val elfEnergy = parseElfEnergy()
+
+        return elfEnergy.max()
+    }
+
+    fun part2(): Int {
+        val elfEnergy = parseElfEnergy()
+        return elfEnergy.sortedDescending().take(3).sum()
     }
 }
 
