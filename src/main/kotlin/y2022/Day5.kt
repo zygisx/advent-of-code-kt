@@ -21,6 +21,13 @@ object Day5 : Day {
         }
     }
 
+    private fun parseInput(lines: List<String>): Pair<CrateStacks, List<Instruction>> {
+        val stackLines = lines.takeWhile { it.isNotBlank() }.reversed()
+        val instructionLines = lines.dropWhile { it.isNotBlank() }.drop(1)
+        val stacks = parseCrateStacks(stackLines)
+        return stacks to instructionLines.map { Instruction.parse(it) }
+    }
+
     private fun parseCrateStacks(lines: List<String>): CrateStacks {
         val numLine = lines.first()
         val stacksNum = numLine.chunked(4).last().trim().toInt()
@@ -28,7 +35,7 @@ object Day5 : Day {
         lines.drop(1).map {
             it.chunked(4).mapIndexed { idx, str  ->
                 val crate = str.trim().replace("[", "").replace("]", "")
-                if (crate.isNotBlank()) stacks[idx]!!.push(crate)
+                if (crate.isNotBlank()) stacks[idx].push(crate)
             }
         }
         return stacks
@@ -38,23 +45,12 @@ object Day5 : Day {
         instructions.forEach {
             val source = stacks[it.from - 1]
             val dest = stacks[it.to - 1]
-            (0 until it.what).forEach { dest.push(source.pop()) }
+            repeat(it.what) { dest.push(source.pop()) }
         }
         return stacks
     }
 
-    fun part1(): String {
-        val stackLines = getInput().takeWhile { it.isNotBlank() }.reversed()
-        val instructionLines = getInput().dropWhile { it.isNotBlank() }.drop(1)
-        val stacks = parseCrateStacks(stackLines)
-
-        val instructions = instructionLines.map { Instruction.parse(it) }
-        val updatedStacks = executeInstructions(stacks, instructions)
-
-        return updatedStacks.mapNotNull { it.peek() }.joinToString("")
-    }
-
-    private fun executeCrateMover9001Instructions(stacks: List<ArrayDeque<String>>, instructions: List<Instruction>): List<ArrayDeque<String>> {
+    private fun executeCrateMover9001Instructions(stacks: CrateStacks, instructions: List<Instruction>): CrateStacks {
         instructions.forEach {
             val source = stacks[it.from - 1]
             val dest = stacks[it.to - 1]
@@ -65,14 +61,15 @@ object Day5 : Day {
         return stacks
     }
 
+    fun part1(): String {
+        val (stacks, instructions) = parseInput(getInput())
+        val updatedStacks = executeInstructions(stacks, instructions)
+        return updatedStacks.mapNotNull { it.peek() }.joinToString("")
+    }
+
     fun part2(): String {
-        val stackLines = getInput().takeWhile { it.isNotBlank() }.reversed()
-        val instructionLines = getInput().dropWhile { it.isNotBlank() }.drop(1)
-        val stacks = parseCrateStacks(stackLines)
-
-        val instructions = instructionLines.map { Instruction.parse(it) }
+        val (stacks, instructions) = parseInput(getInput())
         val updatedStacks = executeCrateMover9001Instructions(stacks, instructions)
-
         return updatedStacks.mapNotNull { it.peek() }.joinToString("")
     }
 }
