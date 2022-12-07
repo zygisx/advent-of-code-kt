@@ -20,7 +20,7 @@ object Day6 : Day {
 
     fun part2(): Int {
         val stream = getInput().first()
-        return indexOfFirstNonRepeatingSequence(stream, 1   4)
+        return indexOfFirstNonRepeatingSequence(stream, 14)
     }
 }
 
