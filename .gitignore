@@ -2,3 +2,5 @@
 .idea
 lib
 build
+
+src/main/resources/inputs/**/*.txt
