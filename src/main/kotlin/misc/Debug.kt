@@ -7,11 +7,13 @@ object Debug {
     }
 
     fun <T> visualizeMap(map: Map<Point, T>, toStringFn: (T?) -> String): String {
+        val minX = map.minByOrNull { it.key.x }!!.key.x
+        val minY = map.minByOrNull { it.key.y }!!.key.y
         val maxX = map.maxByOrNull { it.key.x }!!.key.x
         val maxY = map.maxByOrNull { it.key.y }!!.key.y
 
-        return (0..maxY).map { y ->
-            (0..maxX).map { x ->
+        return (minY..maxY).map { y ->
+            (minX..maxX).map { x ->
                 toStringFn(map[Point(x, y)])
             }.joinToString("")
         }.joinToString("\n")

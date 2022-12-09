@@ -1,6 +1,8 @@
 package misc
 
 import kotlin.math.abs
+import kotlin.math.max
+import kotlin.reflect.KFunction
 
 typealias Points = Iterable<Point>
 
@@ -28,6 +30,7 @@ data class Point(val x: Int, val y: Int): IPoint {
     fun southEast() = Point(x + 1, y - 1)
 
     fun neighbours() = sequenceOf(north(), south(), east(), west())
+    fun diagonal() = sequenceOf(northEast(), northWest(), southEast(), southWest())
 
     override fun plus(point: IPoint): Point {
         point as Point
@@ -41,7 +44,12 @@ data class Point(val x: Int, val y: Int): IPoint {
     fun adjacentFn() = listOf(Point::north, Point::northWest, Point::northEast,
             Point::east, Point::west, Point::south, Point::southWest, Point::southEast, )
 
+    fun diagonalFn() = listOf(Point::northWest, Point::northEast, Point::southWest, Point::southEast)
+
     fun manhattanDistance(anotherPoint: Point) = abs(x - anotherPoint.x) + abs(y - anotherPoint.y)
+
+    // this distance diagonal move count as 1, in manhattan distance diagonal is 2.
+    fun distance(anotherPoint: Point) = max(abs(x - anotherPoint.x), abs(y - anotherPoint.y))
 
     companion object {
         val zeroPoint = Point(0, 0)
@@ -56,8 +64,8 @@ data class Point(val x: Int, val y: Int): IPoint {
         }
 
         fun centroid(points: Points): Point {
-            val x = points.sumBy { it.x } / points.count()
-            val y = points.sumBy { it.y } / points.count()
+            val x = points.sumOf { it.x } / points.count()
+            val y = points.sumOf { it.y } / points.count()
             return Point(x, y)
         }
 
