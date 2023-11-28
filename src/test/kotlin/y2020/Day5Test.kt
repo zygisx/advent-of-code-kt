@@ -33,7 +33,7 @@ internal class Day5Test {
     }
 
     @Test
-    fun `part2 should return ???`() {
+    fun `part2 should return xxx`() {
         assertTrue { true }
     }
 }

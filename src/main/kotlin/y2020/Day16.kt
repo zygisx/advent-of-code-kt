@@ -82,7 +82,7 @@ object Day16 : Day {
         val assignedRules = assignRulesToSeat(notes.rules, seats)
 
         val departureRulesSeats = assignedRules
-                .filter { (seat, rule) -> rule.category.startsWith("departure") }
+                .filter { (_, rule) -> rule.category.startsWith("departure") }
                 .keys
 
         val result = notes.yourTicket

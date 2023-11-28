@@ -25,14 +25,14 @@ internal class Day2Test {
     """.trimIndent().lines()
 
     @Test
-    fun `part1 should return ???`() {
+    fun `part1 should return xxx`() {
         every { InputReader.getInputAsList(any()) } returns testInput
         val answer = Day2.part1()
         assertEquals(150, answer)
     }
 
     @Test
-    fun `part2 should return ???`() {
+    fun `part2 should return xxx`() {
         every { InputReader.getInputAsList(any()) } returns testInput
         val answer = Day2.part2()
         assertEquals(900, answer)

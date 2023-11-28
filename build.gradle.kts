@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "1.9.21"
     application
 }
 group = "me.zygis"
@@ -12,8 +12,8 @@ repositories {
 }
 dependencies {
     testImplementation(kotlin("test-junit5"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-    testImplementation("io.mockk:mockk:1.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+    testImplementation("io.mockk:mockk:1.13.8")
 }
 
 tasks.withType<Test> {
@@ -22,8 +22,4 @@ tasks.withType<Test> {
 
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "17"
-}
-
-application {
-    mainClassName = "MainKt"
 }

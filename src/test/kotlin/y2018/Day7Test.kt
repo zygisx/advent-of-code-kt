@@ -35,6 +35,6 @@ internal class Day7Test {
     }
 
     @Test
-    fun `part2 should return ???`() {
+    fun `part2 should return xxx`() {
     }
 }

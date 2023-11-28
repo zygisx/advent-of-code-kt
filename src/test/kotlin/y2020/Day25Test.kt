@@ -30,7 +30,7 @@ internal class Day25Test {
 
     @Disabled
     @Test
-    fun `part2 should return ???`() {
+    fun `part2 should return xxx`() {
         every { InputReader.getInputAsList(any()) } returns testInput
         val answer = Day25.part2()
         assertEquals(3, answer)

@@ -25,7 +25,7 @@ class Day2 : Day {
             )
         }
 
-        return occurrences.sumBy { it.twice } * occurrences.sumBy { it.thrice }
+        return occurrences.sumOf { it.twice } * occurrences.sumOf { it.thrice }
     }
 
     data class SimilarStrings(val no1: String, val no2: String)

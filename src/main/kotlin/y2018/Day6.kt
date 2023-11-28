@@ -1,6 +1,5 @@
 package y2018
 
-import misc.InputReader
 import misc.Point
 import misc.Points
 import java.util.LinkedList

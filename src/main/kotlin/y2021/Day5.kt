@@ -11,7 +11,7 @@ object Day5 : Day {
          val coordinates = lineStr.split(" -> ").map {
              it.split(",").map { it.trim().toInt() }
          }
-         return Line(Point(coordinates[0][0]!!, coordinates[0][1]!!), Point(coordinates[1][0]!!, coordinates[1][1]!!))
+         return Line(Point(coordinates[0][0], coordinates[0][1]), Point(coordinates[1][0], coordinates[1][1]))
      }
 
      data class Line(val from: Point, val to: Point)

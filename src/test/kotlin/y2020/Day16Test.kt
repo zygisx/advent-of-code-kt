@@ -1,6 +1,6 @@
 package y2020
 
-import io.mockk.every
+import  io.mockk.every
 import io.mockk.mockkObject
 import org.junit.jupiter.api.Test
 import misc.InputReader
@@ -38,6 +38,6 @@ internal class Day16Test {
     }
 
     @Test
-    fun `part2 should return ???`() {
+    fun `part2 should return xxx`() {
     }
 }

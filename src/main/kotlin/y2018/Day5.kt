@@ -8,7 +8,7 @@ class Day5 : Day {
     private fun getInput() = getInputAsString()
 
     private fun doReact(a: Char, b: Char): Boolean {
-        return (a != b && a.toLowerCase() == b.toLowerCase())
+        return (a != b && a.lowercaseChar() == b.lowercaseChar())
     }
 
     private fun fullReaction(polymers: String): Int {
@@ -46,7 +46,7 @@ class Day5 : Day {
     fun part2(): Int {
         val polymers = getInput()
         val minimumSequence = fromAtoZ.map {
-            val cleanedPolymers = polymers.filter { p -> p != it && p != it.toLowerCase() }
+            val cleanedPolymers = polymers.filter { p -> p != it && p != it.lowercaseChar() }
             val res = fullReaction(cleanedPolymers)
             res
         }.minOrNull()
