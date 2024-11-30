@@ -72,7 +72,7 @@ class Day7 : Day {
 
         fun countBags(colorToLook: String): Int {
             val rule = rules.first { it.color == colorToLook }
-            return rule.bags.sumBy { it.count + it.count * countBags(it.color) }
+            return rule.bags.sumOf { it.count + it.count * countBags(it.color) }
         }
 
         return countBags("shiny gold")

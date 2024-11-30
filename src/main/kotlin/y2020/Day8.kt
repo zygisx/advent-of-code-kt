@@ -1,5 +1,7 @@
 package y2020
 
+import java.util.*
+
 
 enum class Op {
     NOP,
@@ -20,7 +22,7 @@ enum class Op {
 
     companion object {
         fun parse(str: String): Op {
-            return valueOf(str.toUpperCase())
+            return valueOf(str.uppercase(Locale.getDefault()))
         }
     }
 }

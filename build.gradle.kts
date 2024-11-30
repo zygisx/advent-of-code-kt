@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.21"
+    kotlin("jvm") version "2.1.0"
     application
 }
 group = "me.zygis"
@@ -13,7 +13,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
-    testImplementation("io.mockk:mockk:1.13.8")
+    testImplementation("io.mockk:mockk:1.13.13")
 }
 
 tasks.withType<Test> {
