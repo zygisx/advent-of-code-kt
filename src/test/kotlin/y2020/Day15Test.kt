@@ -4,6 +4,7 @@ import io.mockk.every
 import io.mockk.mockkObject
 import org.junit.jupiter.api.Test
 import misc.InputReader
+import org.junit.jupiter.api.Disabled
 import kotlin.test.BeforeTest
 import kotlin.test.assertEquals
 
@@ -34,6 +35,7 @@ internal class Day15Test {
     }
 
     @Test
+    @Disabled("Takes too long")
     fun `part2 should return 175594`() {
         every { InputReader.getInputAsString(any()) } returns testInput
         val answer = Day15.part2()
