@@ -8,7 +8,7 @@ import kotlin.test.BeforeTest
 import kotlin.test.assertEquals
 
 
-internal class Day1Test {
+internal class Day2Test {
 
     @BeforeTest
     fun setUp() {
@@ -16,25 +16,25 @@ internal class Day1Test {
     }
 
     val testInput = """
-        3   4
-        4   3
-        2   5
-        1   3
-        3   9
-        3   3
+        7 6 4 2 1
+        1 2 7 8 9
+        9 7 6 2 1
+        1 0 2 4 5
+        8 6 4 4 1
+        1 3 6 7 9
     """.trimIndent().lines()
 
     @Test
     fun `part1 should work as in example`() {
         every { InputReader.getInputAsList(any()) } returns testInput
-        val answer = Day1.part1()
-        assertEquals(11, answer)
+        val answer = Day2.part1()
+        assertEquals(2, answer)
     }
 
     @Test
     fun `part2 should work as in example`() {
         every { InputReader.getInputAsList(any()) } returns testInput
-        val answer = Day1.part2()
-        assertEquals(31, answer)
+        val answer = Day2.part2()
+        assertEquals(4, answer)
     }
 }
