@@ -9,6 +9,18 @@ fun <T> MutableList<T>.swap(idx1: Int, idx2: Int) {
     this[idx2] = temp
 }
 
+fun <T> List<T>.getAllUniquePairs(): List<Pair<T, T>> {
+    val pairs = mutableListOf<Pair<T, T>>()
+
+    for (i in 0 until size) {
+        for (j in (i + 1) until size) {
+            pairs.add(this[i] to this[j])
+        }
+    }
+
+    return pairs
+}
+
 object Collections {
 
     fun <T> queue(initial: Collection<T>): Queue<T> {

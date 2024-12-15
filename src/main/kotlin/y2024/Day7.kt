@@ -1,5 +1,6 @@
 package y2024
 
+import misc.Console.printWithTime
 import misc.splitToLongs
 
 object Day7 : Day {
@@ -14,16 +15,10 @@ object Day7 : Day {
         Expression(result, operands)
     }
 
-    enum class Op {
-        ADD, MUL, CONCAT;
-
-        fun apply(a: Long, b: Long): Long {
-            return when (this) {
-                ADD -> a + b
-                MUL -> a * b
-                CONCAT -> "$a$b".toLong()
-            }
-        }
+    enum class Op(val exec: (Long, Long) -> Long) {
+        ADD({a, b -> a + b}),
+        MUL({a, b -> a * b }),
+        CONCAT({a, b -> "$a$b".toLong()});
     }
 
     fun canBeSolved(expression: Expression, operators: List<Op>): Boolean {
@@ -38,7 +33,7 @@ object Day7 : Day {
             }
 
             return operators.any { op ->
-                solveRec(operands.drop(1), op.apply(currentResult, operands.first()))
+                solveRec(operands.drop(1), op.exec(currentResult, operands.first()))
             }
         }
 
@@ -57,6 +52,6 @@ object Day7 : Day {
 }
 
 fun main() {
-    println(Day7.part1())
-    println(Day7.part2())
+    printWithTime { Day7.part1() }
+    printWithTime { Day7.part2() }
 }

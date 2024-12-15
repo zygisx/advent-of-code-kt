@@ -1,7 +1,7 @@
 package misc
 
-fun String.splitToInts(): List<Int> {
-    return this.split(" ").filter { it.isNotBlank() }.map { it.toInt() }
+fun String.splitToInts(delimiter: String = " "): List<Int> {
+    return this.split(delimiter).filter { it.isNotBlank() }.map { it.toInt() }
 }
 
 fun String.splitToLongs(): List<Long> {

@@ -145,3 +145,11 @@ data class Point4d(val x: Int, val y: Int, val z: Int, val w: Int): IPoint {
         }
     }
 }
+
+object PointHelper {
+    fun mapFromList(input: List<String>): Map<Point, Char> {
+        return input.mapIndexed { y, line ->
+            line.mapIndexed { x, char -> Point(x, y) to char  }
+        }.flatten().toMap()
+    }
+}

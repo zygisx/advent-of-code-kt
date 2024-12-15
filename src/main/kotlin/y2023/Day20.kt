@@ -180,31 +180,6 @@ object Day20 : Day {
     }
 
     fun part2(): Long {
-
-//        listOf("zl", "xn", "qn", "xf").forEach {
-//            val clicks = lookForPulse(it, Pulse.HIGH)
-//            println("$it -> $clicks")
-//        }
-
-//        listOf("qx", "gf", "vc", "db").shuffled().forEach {
-//            val clicks = lookForPulse(it, Pulse.LOW)
-//            println("$it -> $clicks")
-//        }
-
-//        val clicks = lookForPulse("xf", "db", Pulse.LOW)
-//        println("zl -> $clicks")
-//        val instructions = getInput()
-
-//        val (clicks, instructions) = lookForPulse("xf", "db", Pulse.LOW)
-//        println("db = $clicks")
-//        println((instructions.first { it.module.id == "db" }!!.module as Conjunction).lastSignals)
-
-//        listOf("pl", "xm", "nn", "qj", "mc", "jz", "ch", "bp").subList(0, 1).forEach {
-//            val (clicks, instructions) = lookForPulse("db", it, Pulse.HIGH)
-//            println("db <- $it = $clicks")
-//            println((instructions.first { it.module.id == "db" }!!.module as Conjunction).lastSignals)
-//        }
-
         println("\n\n\nxm")
         var intervals = lookForPulseIntervals("db", "xm", 10000)
         println(intervals)
@@ -240,43 +215,7 @@ object Day20 : Day {
             println("$it -> ${it.second.last - it.second.first}")
         }
 
-        // needs to be low therefore all their inputs should be high
-//        listOf("qx", "gf", "vc", "db").map {  id ->
-//            println("--- $id ---")
-//            instructions
-//                .filter { id in it.next }
-//                .map { it.module.id }
-//                .onEach { print("$it ") }
-//                .map { lookForPulse(id, it, Pulse.HIGH).first }
-//                .onEach { println("$it") }
-//                .fold(BigInteger.ONE) { acc, l -> Math.lcm(acc, BigInteger.valueOf(l)) }
-//        }.reduce { acc, l -> Math.lcm(acc, l) }.toLong()
-
         return 0
-
-//            .forEach {
-//                val clicks =
-//                println("$it -> $clicks")
-//            }
-
-
-
-
-        // rx (low) <- th (4 inputs 👇) (all 4 last should be high)
-            // - &zl: (HIGH)
-                // - &qx (LOW)
-            // - &xn (HIGH)
-                // - &gf
-            // - &qn (HIGH)
-                // - &vc
-            // - &xf (HIGH)
-                // - &db (LOW)
-                    // pl, xm, nn, qj, mc, jz, ch, bp (all HIGH)
-
-//        fun op(inputId: String, pulse: Pulse): Pulse {
-//            lastSignals[inputId] = pulse
-//            return if (lastSignals.all { it.value == Pulse.HIGH }) Pulse.LOW else Pulse.HIGH
-//        }
     }
 }
 
@@ -288,4 +227,3 @@ fun main() {
     println("$part2Answer in ${part2Duration.inWholeMilliseconds} ms")
 }
 
-// 810340069670912 -- too high
